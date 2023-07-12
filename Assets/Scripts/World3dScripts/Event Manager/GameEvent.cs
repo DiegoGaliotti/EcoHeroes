@@ -42,8 +42,6 @@ public class EnoughCurrencyGameEvent : GameEvent
 public class XPAddedGameEvent: GameEvent
 {
     public int amount;
-   
-
 
     public XPAddedGameEvent(int amount)
     {
@@ -54,7 +52,6 @@ public class XPAddedGameEvent: GameEvent
 public class LevelChangedGameEvent : GameEvent
 {
     public int newLvl;
-
     public LevelChangedGameEvent(int currLvl)
     {
         newLvl = currLvl;

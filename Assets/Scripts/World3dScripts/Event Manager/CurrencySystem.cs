@@ -11,7 +11,7 @@ public enum CurrencyType  //se crea una variable del tipo CurrencyType que está
 public class CurrencySystem : MonoBehaviour
 {
     private static Dictionary<CurrencyType, int> CurrencyAmounts = 
-        new Dictionary<CurrencyType, int>(); //Creamos una variable CurrencyAmount que es un diccionario, del tipo de currency (coin o gold) y la cantidad
+    new Dictionary<CurrencyType, int>(); //Creamos una variable CurrencyAmount que es un diccionario, del tipo de currency (coin o gold) y la cantidad
 
     [SerializeField] private List<GameObject> texts; //Creo una lista de GameObjects
    

@@ -17,6 +17,19 @@ public class LevelSystem : MonoBehaviour
     private TextMeshProUGUI xpText;
     private TextMeshProUGUI lvlText;
     private Image starImage;
+    private static bool initialized;
+    private static Dictionary<int, int> xpToNextLevel = new Dictionary<int, int>();
+    private static Dictionary<int, int[]> lvlReward = new Dictionary<int, int[]>();
+
+
+    private void Awake() 
+    {
+        slider = levelPanel.GetComponent<Slider>();
+        xpText = levelPanel.transform.Find("XP Text").GetComponent<TextMeshProUGUI>();
+        starImage = levelPanel.transform.Find("Star").GetComponent<Image>();
+        lvlText = starImage.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+    }
+
 
 
 

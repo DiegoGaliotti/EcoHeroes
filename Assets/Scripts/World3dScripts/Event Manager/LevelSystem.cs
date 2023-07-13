@@ -118,15 +118,15 @@ public class LevelSystem : MonoBehaviour
         lvlText.text = (info.newLvl + 1).ToString();
         UpdateUI();
 
-        GameObject window = Instantiate(lvlWindowPrefab, GameManager.current.canvas.transform);
+        //GameObject window = Instantiate(lvlWindowPrefab, GameManager.current.canvas.transform);
 
         //initialize text and images here
 
-        window.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(call: delegate
+        /*window.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(call: delegate
         {
             Destroy(window);
         });
-
+        */
         CurrencyChangeGameEvent currencyInfo =
             new CurrencyChangeGameEvent(lvlReward[info.newLvl][0], CurrencyType.Ecocoins);
         EventManager.Instance.QueueEvent(currencyInfo);

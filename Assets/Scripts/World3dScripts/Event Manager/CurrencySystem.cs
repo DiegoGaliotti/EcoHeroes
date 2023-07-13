@@ -36,12 +36,6 @@ public class CurrencySystem : MonoBehaviour
         //Todo save the currency
         CurrencyAmounts[info.currencyType] += info.amount;
         currencyTexts[info.currencyType].text = CurrencyAmounts[info.currencyType].ToString();
-        
-        /*public CurrencyChangeGameEvent(int amount, CurrencyType currencyType)
-            {
-                this.amount = amount;
-                this.currencyType = currencyType;
-            }*/
     }
 
     private void OnNotEnough(NotEnoughCurrencyGameEvent info) // Cuando no tenga más currency

@@ -98,6 +98,7 @@ public class LevelSystem : MonoBehaviour
 
     private void OnXPAdded(XPAddedGameEvent info)
     {
+        Debug.Log("Llegué acá");
         XPNow += info.amount;
 
         UpdateUI();

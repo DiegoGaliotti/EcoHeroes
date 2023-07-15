@@ -15,7 +15,6 @@ public class GameManager : MonoBehaviour
 
     public void GetXP(int amount)
     {
-        Debug.Log("cjhupa");
         XPAddedGameEvent info = new XPAddedGameEvent(amount);
         EventManager.Instance.QueueEvent(info);
     }

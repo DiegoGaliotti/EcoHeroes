@@ -11,13 +11,13 @@ public class LevelSystem : MonoBehaviour
     private int Level; //El nivel en el que estas  -- BBDD SAVE --
     private int xpToNext; //El XP que te falta para pasar de nivel
 
-    [SerializeField] private GameObject levelPanel; //crea un panel de nivel del tipo GameObject(probablemente la va a usar para asociarle un game object que va a ser donde aparece el nivel)
+    [SerializeField] private GameObject canvas; //crea un panel de nivel del tipo GameObject(probablemente la va a usar para asociarle un game object que va a ser donde aparece el nivel)
     [SerializeField] private GameObject lvlWindowPrefab; //crea una ventana de nivel del tipo Gamebject (seguro la usa para que aparezca una ventana del tipo prefab con un cambio de nivel)
 
     private Slider slider; //UI Slider
     private TextMeshProUGUI xpText; //UI XP Text
     private TextMeshProUGUI lvlText; // UI LEVEL TEXT
-    private Image starImage; // UI strella
+    private Image Image; // UI strella
 
     private static bool initialized;
     private static Dictionary<int, int> xpToNextLevel = new Dictionary<int, int>(); // Cuando pasar de nivel
@@ -25,12 +25,12 @@ public class LevelSystem : MonoBehaviour
 
     private void Awake() 
     {
-        slider = levelPanel.GetComponent<Slider>();
-        xpText = levelPanel.transform.Find("XP Text").GetComponent<TextMeshProUGUI>(); 
-        starImage = levelPanel.transform.Find("Star").GetComponent<Image>(); 
-        lvlText = starImage.transform.GetChild(0).GetComponent<TextMeshProUGUI>(); 
+        slider = canvas.transform.Find("Slider").GetComponent<Slider>();
+        xpText = slider.transform.Find("XP Text").GetComponent<TextMeshProUGUI>();
+        Image = slider.transform.Find("Image").GetComponent<Image>(); 
+        lvlText = Image.transform.GetChild(0).GetComponent<TextMeshProUGUI>(); 
 
-        if(!initialized)
+        if (!initialized)
         {
             Inicialize();
         }
@@ -98,7 +98,7 @@ public class LevelSystem : MonoBehaviour
 
     private void OnXPAdded(XPAddedGameEvent info)
     {
-        Debug.Log("Llegué acá");
+        Debug.Log("Llegu? ac?");
         XPNow += info.amount;
 
         UpdateUI();
@@ -113,8 +113,8 @@ public class LevelSystem : MonoBehaviour
 
     private void OnLevelChanged(LevelChangedGameEvent info)
     {
-        XPNow -= xpToNext; //Acá te deja en el XP now el valor de lo que se pasó. 
-        xpToNext = xpToNextLevel[info.newLvl]; // Acá busca el valor del diccionario y lo agrega en el valor para pasar. 
+        XPNow -= xpToNext; //Ac? te deja en el XP now el valor de lo que se pas?. 
+        xpToNext = xpToNextLevel[info.newLvl]; // Ac? busca el valor del diccionario y lo agrega en el valor para pasar. 
         lvlText.text = (info.newLvl + 1).ToString(); // Te actualiza la UI
         UpdateUI(); // Actualiza la UI
 

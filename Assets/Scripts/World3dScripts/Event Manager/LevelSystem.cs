@@ -116,10 +116,18 @@ public class LevelSystem : MonoBehaviour
         xpToNext = xpToNextLevel[info.newLvl]; // Ac? busca el valor del diccionario y lo agrega en el valor para pasar. 
         lvlText.text = (info.newLvl + 1).ToString(); // Te actualiza la UI
         UpdateUI(); // Actualiza la UI
+        
+        
 
         GameObject window = Instantiate(lvlWindowPrefab, GameManager.current.canvas.transform); //Instancia algo
+        
+       
+        TextMeshProUGUI levelUpTextComponent;
 
-        //initialize text and images here
+        levelUpTextComponent = window.transform.Find("LevelUpText").GetComponent<TextMeshProUGUI>();  // Acceder al componente TextMeshProUGUI del panel y asignar el texto de nivel
+        levelUpTextComponent.text = "You advanced to level "+ (info.newLvl + 1).ToString()+" !";
+          // Obtener el número del nuevo nivel y formatear el texto
+    
 
         window.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(delegate
         {

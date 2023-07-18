@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
 
     public void GetCoins(int amount)
     {
-        CurrencyChangeGameEvent info = new CurrencyChangeGameEvent(amount, CurrencyType.Ecocoins);
+        CurrencyChangeGameEvent info = new CurrencyChangeGameEvent(amount, CurrencyType.Ecocoin);
         EventManager.Instance.QueueEvent(info);
     }
 }

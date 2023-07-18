@@ -54,29 +54,29 @@ public class LevelSystem : MonoBehaviour
 
             TextAsset textAsset = Resources.Load<TextAsset>(path);
             string[] lines = textAsset.text.Split('\n');
-
+                
             xpToNextLevel = new Dictionary<int, int>(capacity: lines.Length - 1);
 
             for(int i = 1; i < lines.Length -1; i++)
             {
-                string[] columns = lines[i].Split(',');
+                string[] columns = lines[i].Split(';');
 
                 int lvl = -1;
                 int xp = -1;
-                int curr1 = -1;
-                int curr2 = -1;
+                int Ecocoin = -1;
+                int Ecogold = -1;
 
                 int.TryParse(columns[0], out lvl);
                 int.TryParse(columns[1], out xp);
-                int.TryParse(columns[2], out curr1);
-                int.TryParse(columns[3], out curr2);
+                int.TryParse(columns[2], out Ecocoin);
+                int.TryParse(columns[3], out Ecogold);
 
                 if (lvl >= 0 && xp > 0)
                 {
                     if (!xpToNextLevel.ContainsKey(lvl))
                     {
                         xpToNextLevel.Add(lvl, xp);
-                        lvlReward.Add(lvl, new []{curr1, curr2});
+                        lvlReward.Add(lvl, new []{Ecocoin, Ecogold});
                     }
                 }
             }
@@ -98,7 +98,6 @@ public class LevelSystem : MonoBehaviour
 
     private void OnXPAdded(XPAddedGameEvent info)
     {
-        Debug.Log("Llegu? ac?");
         XPNow += info.amount;
 
         UpdateUI();
@@ -122,13 +121,13 @@ public class LevelSystem : MonoBehaviour
 
         //initialize text and images here
 
-        window.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(call: delegate
+        window.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(delegate
         {
             Destroy(window);
         });
 
         CurrencyChangeGameEvent currencyInfo =
-            new CurrencyChangeGameEvent(lvlReward[info.newLvl][0], CurrencyType.Ecocoins);
+            new CurrencyChangeGameEvent(lvlReward[info.newLvl][0], CurrencyType.Ecocoin);
         EventManager.Instance.QueueEvent(currencyInfo);
 
         currencyInfo =

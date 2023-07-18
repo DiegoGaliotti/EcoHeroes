@@ -22,10 +22,8 @@ public class CurrencySystem : MonoBehaviour
     {
         for (int i = 0; i < texts.Count; i++) //Para todos los gameobject dentro de la lista textos
         {
-            Debug.Log("Llegue");
             CurrencyAmounts.Add((CurrencyType)i, 0); //Va a agregar un el tipo de currency y un valor puesto a mano que es 0
             currencyTexts.Add((CurrencyType)i, texts[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>()); //Va a cargar en el dic la currency con el textpro del hijo del gameobject que le pones a la lista de text
-            Debug.Log(CurrencyAmounts.Keys + ":" +CurrencyAmounts.Values);
         }
     }
     private void Start()

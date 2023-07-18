@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class TimedBuilding : MonoBehaviour
 {
-    bool inProgress;
+    public bool inProgress;
     private DateTime timerStart;
     private DateTime timerEnd;
 

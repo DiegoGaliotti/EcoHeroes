@@ -17,7 +17,7 @@ public class LevelSystem : MonoBehaviour
     private Slider slider; //UI Slider
     private TextMeshProUGUI xpText; //UI XP Text
     private TextMeshProUGUI lvlText; // UI LEVEL TEXT
-    private Image Image; // UI strella
+    private Image lvlImage; // UI strella
 
     private static bool initialized;
     private static Dictionary<int, int> xpToNextLevel = new Dictionary<int, int>(); // Cuando pasar de nivel
@@ -27,8 +27,8 @@ public class LevelSystem : MonoBehaviour
     {
         slider = canvas.transform.Find("Slider").GetComponent<Slider>();
         xpText = slider.transform.Find("XP Text").GetComponent<TextMeshProUGUI>();
-        Image = slider.transform.Find("Image").GetComponent<Image>(); 
-        lvlText = Image.transform.GetChild(0).GetComponent<TextMeshProUGUI>(); 
+        lvlImage = canvas.transform.Find("LevelImage").GetComponent<Image>(); 
+        lvlText = lvlImage.transform.GetChild(0).GetComponent<TextMeshProUGUI>(); 
 
         if (!initialized)
         {

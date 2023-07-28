@@ -13,16 +13,25 @@ public class BuildingSystem : MonoBehaviour
     [SerializeField] private TileBase whiteTile;
 
     public GameObject prefab1;
-    public GameObject prefab2;
+    
 
     private PlaceableOject objectToPlace;
 
-    #region Unity methods
+    #region Unity methodss
 
     private void Awake()
-    {
+    { 
         current = this;
         grid = gridLayout.gameObject.GetComponent<Grid>();
+    }
+
+    private void Update()
+    {
+        //Todo write the method when push de botton.
+        if(Input.GetKeyDown(KeyCode.A))
+        {
+            InitializeWithObject(prefab1);
+        }
     }
 
     #endregion
@@ -56,5 +65,22 @@ public class BuildingSystem : MonoBehaviour
     }
 
 
+    #endregion
+
+    #region Building Placement
+
+    public void InitializeWithObject(GameObject prefab)
+    {
+        Vector3 position = SnapCoordinateToGrid(Vector3.zero);
+
+        GameObject obj = Instantiate(prefab, position, Quaternion.identity);
+
+        objectToPlace = obj.GetComponent<PlaceableOject>();
+
+        obj.AddComponent<ObjectDrag>();
+       
+
+    }
+    
     #endregion
 }

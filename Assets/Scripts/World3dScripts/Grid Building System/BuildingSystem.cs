@@ -12,7 +12,7 @@ public class BuildingSystem : MonoBehaviour
     [SerializeField] private Tilemap Maintilemap;
     [SerializeField] private TileBase whiteTile;
 
-    public GameObject prefab1;
+    public GameObject prefab;
     
 
     private PlaceableOject objectToPlace;
@@ -30,7 +30,7 @@ public class BuildingSystem : MonoBehaviour
         //Todo write the method when push de botton.
         if(Input.GetKeyDown(KeyCode.A))
         {
-            InitializeWithObject(prefab1);
+            InitializeWithObject(prefab);
         }
     }
 

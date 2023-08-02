@@ -90,14 +90,11 @@ public class BuildingSystem : MonoBehaviour
 
         foreach(var v in area.allPositionsWithin)
         {
-            Vector3Int pos = new Vector3Int(v.x, v.y, 0);
+            Vector3Int pos = new Vector3Int(v.x, 0, v.z); //***PORQUE X, Y SI EL MAPA ES v.x
             array[counter] = tilemap.GetTile(pos);
             counter++;
-            
         }
         return array;
-
-
     }
     
     #endregion
@@ -118,7 +115,7 @@ public class BuildingSystem : MonoBehaviour
         BoundsInt area = new BoundsInt();
         area.position = gridLayout.WorldToCell(objectToPlace.GetStartPosition());
         area.size = placeableObject.Size;
-        area.size = new Vector3Int(area.size.x + 1, area.size.y + 1, area.size.z + 1);
+        area.size = new Vector3Int(area.size.x + 1, area.size.y + 1, area.size.z);
 
         TileBase[] baseArray = GetTilesBlock(area, mainTilemap);
 
@@ -128,15 +125,12 @@ public class BuildingSystem : MonoBehaviour
             {
                 return false;
             }
-
         }
-
         return true;
     }
 
     public void TakeArea(Vector3Int start, Vector3Int size)
     {
-
         mainTilemap.BoxFill(start, whiteTile, start.x, start.y,
             start.x + size.x, start.y + size.y);
     }
